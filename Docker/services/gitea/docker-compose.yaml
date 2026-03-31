@@ -1,0 +1,23 @@
+services:
+  gitea:
+    image: docker.gitea.com/gitea:1.25.4
+    container_name: gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - ./gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "2222:22"
+    networks:
+      - git-network
+      - reverse-proxy-net
+    restart: unless-stopped
+
+networks:
+  git-network:
+    name: git-network
+  reverse-proxy-net:
+    external: true

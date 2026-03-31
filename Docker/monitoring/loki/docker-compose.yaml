@@ -1,0 +1,43 @@
+services:
+  loki:
+    image: grafana/loki
+    container_name: loki
+    command:
+      - '-config.file=/etc/loki/local-config.yaml'
+    volumes:
+      - ./loki-config.yaml:/etc/loki/local-config.yaml
+      - loki-data:/loki
+    networks:
+      - loki-net
+      - prometheus-net
+      - reverse-proxy-net
+    restart: unless-stopped
+
+  promtail:
+    image: grafana/promtail
+    container_name: promtail
+    command: '-config.file=/etc/promtail/config.yaml'
+    volumes:
+     # - Path/to/logs:/var/log
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./promtail-config.yaml:/etc/promtail/config.yaml
+      - promtail-positions:/tmp/positions
+    networks:
+      - loki-net
+      - prometheus-net
+    restart: unless-stopped
+
+volumes:
+  loki-data:
+    name: loki-data
+  promtail-positions:
+    name: promtail-positions
+
+networks:
+  loki-net:
+    name: loki-net
+  prometheus-net:
+    external: true
+  reverse-proxy-net:
+    external: true

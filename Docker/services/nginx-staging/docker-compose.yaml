@@ -1,0 +1,13 @@
+services:
+ staging-nginx-astroalce:
+   image: ${PRIVATE_REPO_TEST_IMAGE}
+   container_name: staging-nginx-domain
+   networks:
+     - reverse-proxy-net
+   volumes:
+     - ./conf.d:/etc/nginx/conf.d
+   restart: unless-stopped
+
+networks:
+  reverse-proxy-net:
+    external: true

@@ -1,0 +1,39 @@
+services:
+  borgmatic:
+    image: ghcr.io/borgmatic-collective/borgmatic
+    container_name: borgmatic
+    volumes:
+      # Backup Host Data Fail2ban, Ufw, Docker dir
+      - /etc/ufw:/mnt/source/etc/ufw:ro
+      - /etc/default/ufw:/mnt/source/etc/default/ufw:ro
+      - /etc/fail2ban:/mnt/source/etc/fail2ban:ro
+      - /home/${HOST_USER}/Docker:/mnt/source/docker:ro
+      
+      # Backup Named Volumes
+      - certbot_certs:/mnt/source/certbot:ro
+      - loki-data:/mnt/source/loki:ro
+      - promtail-positions:/mnt/source/promtail:ro
+      - prom_data:/mnt/source/prometheus:ro
+
+      # Borgmatic Confs
+      - ${VOLUME_TARGET}:/mnt/borg-repository      # backup target
+      - ${VOLUME_ETC_BORGMATIC}:/etc/borgmatic.d/  # borgmatic config file(s) + crontab.txt
+      - ${VOLUME_BORG_CONFIG}:/root/.config/borg   # config and keyfiles
+      - ${VOLUME_SSH}:/root/.ssh                   # ssh key for remote repositories
+      - ${VOLUME_BORG_CACHE}:/root/.cache/borg     # checksums used for deduplication
+    environment:
+      - TZ=${TZ}
+      - BORG_PASSPHRASE=${BORG_PASSPHRASE}
+
+volumes:
+  certbot_certs:
+    external: true
+
+  loki-data:
+    external: true
+
+  promtail-positions:
+    external: true
+
+  prom_data:
+    external: true

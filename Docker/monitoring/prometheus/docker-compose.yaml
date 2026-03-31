@@ -1,0 +1,52 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - reverse-proxy-net
+      - prometheus-net
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prom_data:/prometheus
+  
+  cadvisor:
+    image: ghcr.io/google/cadvisor:0.56.2
+    container_name: cadvisor
+    networks:
+      - prometheus-net
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    restart: unless-stopped
+  
+  node_exporter:
+    image: quay.io/prometheus/node-exporter:latest
+    container_name: node_exporter
+    command:
+      - '--path.rootfs=/host'
+    network_mode: host
+    pid: host
+    restart: unless-stopped
+    volumes:
+      - '/:/host:ro,rslave'
+
+volumes:
+  prom_data:
+    name: prom_data
+
+networks:
+  reverse-proxy-net:
+    external: true
+  prometheus-net:
+    name: prometheus-net

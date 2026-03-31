@@ -1,0 +1,13 @@
+services:
+  nginx-astroalce:
+    image: ${PRIVATE_REPO_IMAGE}
+    container_name: nginx-domain
+    networks:
+      - reverse-proxy-net
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+    restart: unless-stopped
+
+networks:
+  reverse-proxy-net:
+    external: true

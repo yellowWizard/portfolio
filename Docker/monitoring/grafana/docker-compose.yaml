@@ -1,0 +1,19 @@
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: unless-stopped
+    networks:
+      - reverse-proxy-net
+      - prometheus-net
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWD}
+      - GF_SERVER_ROOT_URL=${SERVER_ROOT_URL}
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources
+networks:
+  reverse-proxy-net:
+    external: true
+  prometheus-net:
+    external: true

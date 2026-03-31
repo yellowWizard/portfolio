@@ -1,0 +1,51 @@
+# Secrets
+*.env
+*.env.*
+*.ini
+*.key
+*.pem
+.htpasswd
+
+# Certificates
+**/ssl/
+**/letsencrypt/
+
+# Reverse Proxy
+**/security/
+**/errors/
+
+# Web Server
+**/public/
+
+# Logs
+*.log
+**/log/
+
+# Docker volumes / runtime data
+**/data/
+**/repository/
+*.db
+
+# Gitea/Act runner
+**/gitea/gitea
+**/gitea-act-runner/config.yaml
+
+# Wireguard
+**/wireguard/config/
+
+# Borg backup repo
+**/borgmatic/repository/
+**/borgmatic/.config/
+**/borgmatic/.ssh/
+**/borgmatic/.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Ansible
+*.retry
+
+# Temporary files
+*.tmp
+*.swp

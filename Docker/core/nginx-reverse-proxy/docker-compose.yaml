@@ -1,0 +1,25 @@
+services:
+  nginx-reverse-proxy:
+    image: steevefano/nginx-modsec-unprivileged-alpine:1
+    container_name: nginx-reverse-proxy
+    ports:
+      - "80:8080"
+      - "443:8443"
+    volumes:
+      - ./log/:/tmp/nginx/log
+      - ./security/modsecurity/modsec/:/etc/nginx/modsec/
+      - ./security/modsecurity/owasp/:/usr/local/owasp-modsecurity-crs/
+      - ./conf.d:/etc/nginx/conf.d:ro
+      - ./.htpasswd:/etc/nginx/.htpasswd:ro
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - certbot_certs:/etc/letsencrypt:ro
+    networks:
+      - reverse-proxy-net
+    restart: unless-stopped
+
+volumes:
+  certbot_certs:
+    external: true
+networks:
+  reverse-proxy-net:
+    external: true

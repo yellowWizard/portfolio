@@ -1,0 +1,12 @@
+services:
+  certbot:
+    image: steevefano/certbot-dns-njalla:1
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - ./njalla.ini:/etc/letsencrypt/njalla.ini:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    entrypoint: "certbot renew -a dns-njalla --dns-njalla-credentials /etc/letsencrypt/njalla.ini --deploy-hook 'chgrp -R 101 /etc/letsencrypt && chmod -R g+rX /etc/letsencrypt && chmod 640 /etc/letsencrypt/archive/*/privkey*.pem && docker kill -s HUP nginx-reverse-proxy'"
+
+volumes:
+  certbot_certs:
+    name: certbot_certs
