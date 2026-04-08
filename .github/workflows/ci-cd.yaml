@@ -1,0 +1,47 @@
+name: Deploy Hugo Site
+on:
+  push:
+    branches:
+      - main
+      - staging
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v6
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Build Staging Website Hugo
+        if: startsWith(github.ref, 'refs/heads/staging')
+        run: hugo --baseURL "${{secrets.STAGING_URL}}" --minify
+
+      - name: Build Production Website Hugo
+        if: startsWith(github.ref, 'refs/heads/main')
+        run: hugo --baseURL "${{secrets.PUBLIC_URL}}" --minify
+
+      - name: Build Docker Image
+        run: |
+          docker build -t website:${{github.ref_name}} .
+
+      - name: Deploy Container
+        run: |
+          if [ "${{github.ref_name}}" == "staging" ]; then
+            docker stop "${{ secrets.STAGING_CONTAINER }}" || true
+            docker rm "${{ secrets.STAGING_CONTAINER }}" || true
+            docker run -d --name "${{ secrets.STAGING_CONTAINER }}" --network reverse-proxy-net --restart unless-stopped website:${{github.ref_name}}
+          else
+            docker stop "${{ secrets.PUBLIC_CONTAINER }}" || true
+            docker rm "${{ secrets.PUBLIC_CONTAINER }}" || true
+            docker run -d --name "${{ secrets.PUBLIC_CONTAINER }}" --network reverse-proxy-net --restart unless-stopped website:${{github.ref_name}}
+          fi
+
