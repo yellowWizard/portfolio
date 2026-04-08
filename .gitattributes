@@ -1,0 +1,7 @@
+# nginx syntax
+Docker/core/nginx-reverse-proxy/**/*.conf linguist-language=Nginx
+Docker/services/nginx-prod/**/*.conf linguist-language=Nginx
+Docker/services/nginx-staging/**/*.conf linguist-language=Nginx
+
+# yaml.example syntax
+**.yaml.example linguist-language=YAML
