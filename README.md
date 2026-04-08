@@ -30,6 +30,8 @@ The infrastructure is container-based, with services orchestrated through Docker
 
 ## Services
 
+<div align="center">
+
 | Service                             | Role                                |
 | ----------------------------------- | ----------------------------------- |
 | [Reverse Proxy (Nginx + ModSecurity)](./Docker/core/nginx-reverse-proxy/) | Secure entry point with WAF         |
@@ -45,6 +47,8 @@ The infrastructure is container-based, with services orchestrated through Docker
 | [Node Exporter](./Docker/monitoring/prometheus/)                       | Host monitoring                     |
 | [cAdvisor](./Docker/monitoring/prometheus/)                            | Container monitoring                |
 | [Borgmatic](./Docker/backup/borgmatic/)                           | Backup automation                   |
+
+</div>
 
 The platform integrates components across application hosting, networking, observability, CI/CD, and data protection.
 
