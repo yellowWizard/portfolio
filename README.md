@@ -3,7 +3,11 @@
 
 ## Overview
 
-This project showcases a self-hosted infrastructure deployed on a VPS (Hetzner). It reflects a hands-on approach to infrastructure design, combining containerization, network security, monitoring, and backup strategies.
+This project is a personal self-hosted infrastructure built as a technical portfolio. It is designed to demonstrate practical experience in system design, infrastructure automation, containerization, security, monitoring, and CI/CD workflows.
+
+The environment is deployed on a VPS (Hetzner) and simulates a production-like setup, with a strong focus on reproducibility, security, and observability.
+
+Beyond serving real services, the main purpose of this project is to experiment with infrastructure technologies and test architectural decisions in a real environment while documenting the results. It also acts as a public showcase of my work and ongoing learning in the DevOps and infrastructure space.
 
 ---
 
@@ -24,7 +28,6 @@ This project showcases a self-hosted infrastructure deployed on a VPS (Hetzner).
 ## Architecture
 
 The infrastructure is container-based, with services orchestrated through Docker to ensure isolation and reproducibility. Each component is deployed independently, allowing the entire stack to be rebuilt quickly on a new host.
-
 
 ---
 
@@ -51,18 +54,17 @@ The infrastructure is container-based, with services orchestrated through Docker
 
 </div>
 
-The platform integrates components across application hosting, networking, observability, CI/CD, and data protection.
+The platform integrates application hosting, networking, observability, CI/CD, and data protection into a single self-hosted system.
 
-External access is handled through a reverse proxy based on Nginx with ModSecurity, acting as an entry point with WAF enforcement. Internal services are not directly exposed and are reachable only through controlled access mechanisms such as WireGuard VPN or authentication layers.
+External access is handled through an Nginx reverse proxy with ModSecurity acting as a WAF. Internal services are not directly exposed and are accessible only via controlled access mechanisms such as WireGuard or authentication layers.
 
-Application and code management are provided by Gitea, complemented by a basic CI/CD pipeline using GitHub Actions. The pipeline builds the Hugo-based static site, packages it into a Docker image, and deploys it to either staging or production environments, enabling a simple automated release flow.
+Application and code management are provided by Gitea, along with a CI/CD pipeline running on a self-hosted Act Runner. The pipeline builds and deploys a Hugo-based static site to staging or production entirely within the infrastructure.
 
-Static content is served via dedicated Nginx instances for public and staging environments. The staging environment is isolated and protected through VPN access and additional authentication controls. TLS certificates are automatically issued and renewed via Certbot using the DNS-01 challenge.
+Static content is served via dedicated Nginx instances for production and staging environments, with staging isolated and VPN-restricted. TLS certificates are managed automatically using Certbot with DNS-01 validation.
 
-Observability is implemented through Prometheus for metrics collection, Grafana for visualization, and Loki with Promtail for centralized logging. Host and container-level monitoring is provided by Node Exporter and cAdvisor.
+Observability is provided by Prometheus, Grafana, and Loki, with host and container metrics collected via Node Exporter and cAdvisor.
 
-Backups are managed through Borgmatic and scheduled via Cron, with data stored both locally and offsite to ensure redundancy.
-
+Backups are handled by Borgmatic and executed on a schedule via cron, with data stored both locally and offsite for redundancy.
 
 ---
 
