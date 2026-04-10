@@ -1,0 +1,2 @@
+0 */12 * * * root /usr/bin/docker compose -f /path/to/docker-compose.yaml run --rm certbot >> /var/log/certbot-cron.log 2>&1
+
