@@ -1,4 +1,5 @@
-# Gitea
+# 🗂️ Gitea
+
 
 ## Overview
 
@@ -7,6 +8,7 @@ A self-hosted Git platform used to manage source code and repositories for the i
 The service is only accessible through the WireGuard VPN and the reverse proxy.
 
 Authentication is required to access repositories and administrative features.
+
 
 ## Setup
 

@@ -1,13 +1,12 @@
+# 🐳 Self-Hosted Infrastructure Portfolio
 
-# Self-Hosted Infrastructure Portfolio
 
 ## Overview
 
-This project showcases a self-hosted infrastructure deployed on a VPS (Hetzner), designed and managed with a focus on **security, portability, and observability**.
-
-It reflects a hands-on approach to infrastructure design, combining containerization, network security, monitoring, and backup strategies.
+This project showcases a self-hosted infrastructure deployed on a VPS (Hetzner). It reflects a hands-on approach to infrastructure design, combining containerization, network security, monitoring, and backup strategies.
 
 ---
+
 
 ## Key Highlights
 
@@ -21,12 +20,14 @@ It reflects a hands-on approach to infrastructure design, combining containeriza
 
 ---
 
+
 ## Architecture
 
 The infrastructure is container-based, with services orchestrated through Docker to ensure isolation and reproducibility. Each component is deployed independently, allowing the entire stack to be rebuilt quickly on a new host.
 
 
 ---
+
 
 ## Services
 
@@ -41,11 +42,11 @@ The infrastructure is container-based, with services orchestrated through Docker
 | [Nginx (Public)](./Docker/services/nginx-prod/)                      | Static content delivery             |
 | [Nginx (Staging)](./Docker/services/nginx-staging/)                     | Isolated staging environment        |
 | [Certbot](./Docker/core/certbot/)                             | TLS certificate automation          |
-| [Prometheus](./Docker/monitoring/prometheus/)                          | Metrics collection                  |
-| [Grafana](./Docker/monitoring/grafana/)                             | Metrics visualization               |
-| [Loki + Promtail](./Docker/monitoring/loki/)                     | Log aggregation                     |
-| [Node Exporter](./Docker/monitoring/prometheus/)                       | Host monitoring                     |
-| [cAdvisor](./Docker/monitoring/prometheus/)                            | Container monitoring                |
+| [Prometheus](./Docker/monitoring/)                          | Metrics collection                  |
+| [Grafana](./Docker/monitoring/)                             | Metrics visualization               |
+| [Loki + Promtail](./Docker/monitoring/)                     | Log aggregation                     |
+| [Node Exporter](./Docker/monitoring/)                       | Host monitoring                     |
+| [cAdvisor](./Docker/monitoring/)                            | Container monitoring                |
 | [Borgmatic](./Docker/backup/borgmatic/)                           | Backup automation                   |
 
 </div>
@@ -64,6 +65,7 @@ Backups are managed through Borgmatic and scheduled via Cron, with data stored b
 
 
 ---
+
 
 ## Coming Soon
 

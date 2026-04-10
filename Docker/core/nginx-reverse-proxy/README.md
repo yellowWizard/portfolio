@@ -1,5 +1,5 @@
+# 🚦 Reverse Proxy (Nginx + ModSecurity)
 
-# Reverse Proxy (Nginx + ModSecurity)
 
 ## Overview
 
@@ -10,12 +10,14 @@ Its role is to handle incoming traffic, enforce security rules, and route reques
 
 The configuration is designed to be portable and reproducible through Docker.
 
+
 ## What it does
 
 * Handle HTTPS connections
 * Route traffic to internal services
 * Apply WAF rules to incoming requests
 * Isolate internal services from direct exposure
+
 
 ## Setup
 

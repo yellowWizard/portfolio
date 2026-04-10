@@ -1,4 +1,5 @@
-# WireGuard VPN
+# 🔑 WireGuard VPN
+
 
 ## Overview
 
