@@ -35,13 +35,17 @@ jobs:
 
       - name: Deploy Container
         run: |
-          if [ "${{github.ref_name}}" == "staging" ]; then
-            docker stop "${{ secrets.STAGING_CONTAINER }}" || true
-            docker rm "${{ secrets.STAGING_CONTAINER }}" || true
-            docker run -d --name "${{ secrets.STAGING_CONTAINER }}" --network reverse-proxy-net --restart unless-stopped website:${{github.ref_name}}
+          if [ "${{ github.ref_name }}" == "staging" ]; then
+            CONTAINER_NAME="${{ secrets.STAGING_CONTAINER }}"
           else
-            docker stop "${{ secrets.PUBLIC_CONTAINER }}" || true
-            docker rm "${{ secrets.PUBLIC_CONTAINER }}" || true
-            docker run -d --name "${{ secrets.PUBLIC_CONTAINER }}" --network reverse-proxy-net --restart unless-stopped website:${{github.ref_name}}
+            CONTAINER_NAME="${{ secrets.PUBLIC_CONTAINER }}"
           fi
+          
+          docker stop "$CONTAINER_NAME" || true
+          docker rm "$CONTAINER_NAME" || true
+          docker run -d \
+            --name "$CONTAINER_NAME" \
+            --network reverse-proxy-net \
+            --restart unless-stopped \
+            website:${{ github.ref_name }}
 
