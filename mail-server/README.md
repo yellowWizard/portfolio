@@ -1,4 +1,4 @@
-# 📧 Standalone Mail Infrastructure (Mailcow)
+# 🐮 Standalone Mail Infrastructure (Mailcow)
 
 This module implements a fully isolated email infrastructure using **Mailcow (Dockerized)**. To protect the sender reputation of the main platform and guarantee high deliverability, this mail server is deployed on an entirely dedicated host with a separate `.me` domain.
 
