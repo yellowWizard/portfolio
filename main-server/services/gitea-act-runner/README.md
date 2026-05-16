@@ -12,7 +12,7 @@ The service is not directly exposed. It communicates only with Gitea and the Doc
 
 ## Workflow
 
-When a change is pushed to a repository the [workflows](../../../.github/workflows/ci-cd.yaml.example) goes as follows:
+When a change is pushed to a repository the [workflows](../../../ci-cd-templates/website-deployment.yml) goes as follows:
 
 * Gitea triggers a webhook event
 * The runner pulls the job definition
