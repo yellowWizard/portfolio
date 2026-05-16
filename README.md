@@ -46,20 +46,20 @@ Backups are handled by Borgmatic and executed on a schedule via cron.
 
 | Service                             | Role                                |
 | ----------------------------------- | ----------------------------------- |
-| [Reverse Proxy (Nginx + ModSecurity)](./Docker/core/nginx-reverse-proxy/) | Secure entry point with WAF         |
-| [WireGuard](./Docker/core/wireguard/)                           | Private access to internal services |
+| [Reverse Proxy (Nginx + ModSecurity)](./main-server/core/nginx-reverse-proxy/) | Secure entry point with WAF         |
+| [WireGuard](./main-server/core/wireguard/)                           | Private access to internal services |
 | [MailCow](#)                               | Self-hosted Dockerized Mail Suite |
-| [Gitea](./Docker/services/gitea/)                               | Self-hosted Git platform            |
-| [Gitea Act Runner](./Docker/services/gitea-act-runner/)                    | CI/CD runner     |
-| [Nginx (Public)](./Docker/services/nginx-prod/)                      | Static content delivery             |
-| [Nginx (Staging)](./Docker/services/nginx-staging/)                     | Isolated staging environment        |
-| [Certbot](./Docker/core/certbot/)                             | TLS certificate automation          |
-| [Prometheus](./Docker/monitoring/)                          | Metrics collection                  |
-| [Grafana](./Docker/monitoring/)                             | Metrics visualization               |
-| [Loki + Promtail](./Docker/monitoring/)                     | Log aggregation                     |
-| [Node Exporter](./Docker/monitoring/)                       | Host monitoring                     |
-| [cAdvisor](./Docker/monitoring/)                            | Container monitoring                |
-| [Borgmatic](./Docker/backup/borgmatic/)                           | Backup automation                   |
+| [Gitea](./mail-server/services/gitea/)                               | Self-hosted Git platform            |
+| [Gitea Act Runner](./main-server/services/gitea-act-runner/)                    | CI/CD runner     |
+| [Nginx (Public)](./main-server/services/nginx-prod/)                      | Static content delivery             |
+| [Nginx (Staging)](./main-server/services/nginx-staging/)                     | Isolated staging environment        |
+| [Certbot](./main-server/core/certbot/)                             | TLS certificate automation          |
+| [Prometheus](./main-server/monitoring/)                          | Metrics collection                  |
+| [Grafana](./main-server/monitoring/)                             | Metrics visualization               |
+| [Loki + Promtail](./main-server/monitoring/)                     | Log aggregation                     |
+| [Node Exporter](./main-server/monitoring/)                       | Host monitoring                     |
+| [cAdvisor](./main-server/monitoring/)                            | Container monitoring                |
+| [Borgmatic](./main-server/backup/borgmatic/)                           | Backup automation                   |
 
 </div>
 
