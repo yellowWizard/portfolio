@@ -32,9 +32,9 @@ The table below lists the operational roles and deployment models chosen for eac
 
 | Service                             | Role                                |
 | ----------------------------------- | ----------------------------------- |
+| [MailCow](./mail-server/)                               | Self-hosted Dockerized Mail Suite |
 | [Reverse Proxy (Nginx + ModSecurity)](./main-server/core/nginx-reverse-proxy/) | Secure entry point with WAF         |
 | [WireGuard](./main-server/core/wireguard/)                           | Private access to internal services |
-| [MailCow](./mail-server/)                               | Self-hosted Dockerized Mail Suite |
 | [Gitea](./main-server/services/gitea/)                               | Self-hosted Git platform            |
 | [Gitea Act Runner](./main-server/services/gitea-act-runner/)                    | CI/CD runner     |
 | [Nginx (Public)](./main-server/services/nginx-prod/)                      | Static content delivery             |

@@ -6,27 +6,24 @@ This repository serves as a centralized technical portfolio demonstrating practi
 
 ## Repository Architecture
 
-To ensure high reproducibility and clean documentation, the portfolio is segregated into dedicated functional directories.
 
-* **[Self-Hosted Infrastructure](./self-hosted-vps)** contains the production-grade deployment of containerized core applications running on a public cloud VPS, managed via infrastructure automation and protected by edge security layers.
-* **[Campus Network Design](./cisco-network-lab)** hosts an enterprise-grade multi-site Cisco network built around a 3-tier hierarchical design, featuring advanced routing, gateway redundancy, and secure wireless integration.
+* **[Self-Hosted Infrastructure:](./self-hosted-vps)** contains the configuration files for containerized applications running on a public cloud VPS, managed via local docker-compose files and monitored via an observability stack.
+* **[Network Lab Environments:](./cisco-network-lab)** hosts Cisco Packet Tracer simulations and network topologies, starting with a multi-site infrastructure built around a 3-tier hierarchy featuring routing, gateway redundancy, and centralized wireless connectivity.
+
 
 ---
+## Project Summary
 
-## Core Competencies Demonstrated
+### Systems & DevOps
+* **Containerization** implements Docker and Docker Compose to manage and deploy internal services.
+* **Reverse Proxy** handles external traffic via Nginx integrated with ModSecurity.
+* **Automation** utilizes Gitea with a self-hosted runner to execute a Hugo-based static website deployment pipeline.
+* **Observability** collects system telemetry and logs using Prometheus, Grafana, and Loki.
 
-The overall ecosystem is architected to showcase modern infrastructure requirements, focusing heavily on rigid security boundaries, data resilience, and proactive monitoring.
-
-### Systems and DevOps Engineering
-* **Containerized Ecosystems** built with Docker and Docker Compose to isolate internal tools and microservices.
-* **Web Application Hardening** implemented via Nginx reverse proxies coupled with ModSecurity WAF rules.
-* **Automated CI/CD Workflows** powered by Git infrastructure and self-hosted runners for continuous software static delivery.
-* **Observability Pipelines** leveraging Prometheus, Grafana, and Loki for real-time telemetry and log management.
-
-### Network Engineering
-* **Hierarchical Infrastructure Design** mapping out Core, Distribution, and Access layout layers.
-* **Dynamic Inter-Site Routing** over dual-stack IPv4 and IPv6 topologies running scalable OSPF routing configurations.
-* **First-Hop Redundancy** ensuring operational uptime through high-availability protocols like HSRPv2.
-* **Enterprise Wireless Architectures** managing centralized wireless deployments via Layer 3 CAPWAP tunnels and DHCP Option 43.
+### Network Architecture
+* **Topology Design** organizes the local network layout into Core, Distribution, and Access layers.
+* **Routing Setup** manages inter-site connectivity over IPv4 and IPv6 subnets using the OSPF protocol.
+* **Redundancy Configuration** provides backup gateways for the local subnets via HSRPv2.
+* **Wireless Deployment** integrates Lightweight Access Points controlled centrally by a WLC through Layer 3 CAPWAP tunnels and DHCP Option 43.
 
 ---
