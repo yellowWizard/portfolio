@@ -76,7 +76,6 @@ The network segregates departments and traffic types into distinct subnets to mi
 | **CSW2** | `G1/0/1` | `10.0.0.38/30` | `2001:db8:a2::/64` (EUI-64) |
 | | `Po1` (to CSW1) | `10.0.0.42/30` | Enabled (No Explicit Global IP) |
 | | `Loopback0` | `10.0.0.78/32` | *N/A* |
-| **SRV1** | NIC | `10.5.0.4/24` (GW: `10.5.0.1`) | *N/A* |
 
 ---
 
