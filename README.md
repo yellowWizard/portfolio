@@ -1,67 +1,32 @@
-# 🐳 Self-Hosted Infrastructure Portfolio
+# Multi-Domain Systems and Network Engineering Portfolio
 
-
-## Overview
-
-This project is a personal self-hosted infrastructure built as a technical portfolio. It is designed to demonstrate practical experience in system design, infrastructure automation, containerization, security, monitoring, and CI/CD workflows.
-
-The environment is deployed on a VPS (Hetzner) and simulates a production-like setup, with a strong focus on reproducibility, security, and observability.
-
-Beyond serving real services, the main purpose of this project is to experiment with infrastructure technologies and test architectural decisions in a real environment while documenting the results.
+This repository serves as a centralized technical portfolio demonstrating practical engineering experience across infrastructure deployment, automation, systems administration, and advanced network design. 
 
 ---
 
+## Repository Architecture
 
-## Key Highlights
+To ensure high reproducibility and clean documentation, the portfolio is segregated into dedicated functional directories.
 
-* Fully containerized infrastructure using Docker
-* Self Hosted Mail Server (MailCow)
-* Private service access via VPN (WireGuard)
-* Centralized reverse proxy with WAF (ModSecurity + OWASP CRS)
-* End-to-end observability (metrics and logs)
-* Backup strategy with local and offsite redundancy
-* Basic CI/CD pipeline with automated build and container deployment
+* **[Self-Hosted Infrastructure](./self-hosted-vps)** contains the production-grade deployment of containerized core applications running on a public cloud VPS, managed via infrastructure automation and protected by edge security layers.
+* **[Campus Network Design](./cisco-network-lab)** hosts an enterprise-grade multi-site Cisco network built around a 3-tier hierarchical design, featuring advanced routing, gateway redundancy, and secure wireless integration.
 
 ---
 
+## Core Competencies Demonstrated
 
-## Services
+The overall ecosystem is architected to showcase modern infrastructure requirements, focusing heavily on rigid security boundaries, data resilience, and proactive monitoring.
 
-The platform provides a distributed ecosystem for application hosting, networking, observability, CI/CD, and secure communication.
+### Systems and DevOps Engineering
+* **Containerized Ecosystems** built with Docker and Docker Compose to isolate internal tools and microservices.
+* **Web Application Hardening** implemented via Nginx reverse proxies coupled with ModSecurity WAF rules.
+* **Automated CI/CD Workflows** powered by Git infrastructure and self-hosted runners for continuous software static delivery.
+* **Observability Pipelines** leveraging Prometheus, Grafana, and Loki for real-time telemetry and log management.
 
-A complete mail infrastructure is provided by a self-hosted Mailcow (Dockerized) instance. The setup involves DNS configuration, including SPF, DKIM, and DMARC policies, to ensure high deliverability and security. To establish a solid sender reputation, a warm-up strategy is currently active, gradually building trust for both the domain and the dedicated IP with major email providers
+### Network Engineering
+* **Hierarchical Infrastructure Design** mapping out Core, Distribution, and Access layout layers.
+* **Dynamic Inter-Site Routing** over dual-stack IPv4 and IPv6 topologies running scalable OSPF routing configurations.
+* **First-Hop Redundancy** ensuring operational uptime through high-availability protocols like HSRPv2.
+* **Enterprise Wireless Architectures** managing centralized wireless deployments via Layer 3 CAPWAP tunnels and DHCP Option 43.
 
-External access is handled through an Nginx reverse proxy with ModSecurity acting as a WAF. Internal services are not directly exposed and are accessible only via controlled access mechanisms such as WireGuard or authentication layers.
-
-Application and code management are provided by Gitea, along with a CI/CD pipeline running on a self-hosted Act Runner. The pipeline builds and deploys a Hugo-based static site to staging or production entirely within the infrastructure.
-
-Static content is served via dedicated Nginx instances for production and staging environments, with staging isolated and VPN-restricted. TLS certificates are managed automatically using Certbot with DNS-01 validation.
-
-Observability is provided by Prometheus, Grafana, and Loki, with host and container metrics collected via Node Exporter and cAdvisor.
-
-Backups are handled by Borgmatic and executed on a schedule via cron.
-
-
-<div align="center">
-
-| Service                             | Role                                |
-| ----------------------------------- | ----------------------------------- |
-| [Reverse Proxy (Nginx + ModSecurity)](./main-server/core/nginx-reverse-proxy/) | Secure entry point with WAF         |
-| [WireGuard](./main-server/core/wireguard/)                           | Private access to internal services |
-| [MailCow](./mail-server/)                               | Self-hosted Dockerized Mail Suite |
-| [Gitea](./main-server/services/gitea/)                               | Self-hosted Git platform            |
-| [Gitea Act Runner](./main-server/services/gitea-act-runner/)                    | CI/CD runner     |
-| [Nginx (Public)](./main-server/services/nginx-prod/)                      | Static content delivery             |
-| [Nginx (Staging)](./main-server/services/nginx-staging/)                     | Isolated staging environment        |
-| [Certbot](./main-server/core/certbot/)                             | TLS certificate automation          |
-| [Prometheus](./main-server/monitoring/)                          | Metrics collection                  |
-| [Grafana](./main-server/monitoring/)                             | Metrics visualization               |
-| [Loki + Promtail](./main-server/monitoring/)                     | Log aggregation                     |
-| [Node Exporter](./main-server/monitoring/)                       | Host monitoring                     |
-| [cAdvisor](./main-server/monitoring/)                            | Container monitoring                |
-| [Borgmatic](./main-server/backup/borgmatic/)                           | Backup automation                   |
-
-</div>
-
-
-
+---
