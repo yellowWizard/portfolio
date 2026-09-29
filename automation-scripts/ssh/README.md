@@ -1,13 +1,5 @@
-# Systems Administration Automation (sysadmin)
 
-This directory contains Python scripts designed to automate Linux server administration, security hardening, and configuration management. 
-
-The main focus here is to replace manual terminal tasks with reliable, repeatable, and safe code.
-
-## Available Scripts
-
-### 1. [`sshd_audit`](./sshd_audit/)
-A lightweight script to automatically update and harden security settings in `/etc/ssh/sshd_config`. 
+This script automatically update security settings in `/etc/ssh/sshd_config`. 
 
 *   **Main Features**:
     *   Creates an automatic backup copy before touching any system files.

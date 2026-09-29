@@ -6,6 +6,9 @@
 *.pem
 .htpasswd
 
+# python
+__pycache__/
+
 # Certificates
 **/ssl/
 **/letsencrypt/

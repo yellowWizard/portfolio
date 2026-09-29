@@ -1,0 +1,37 @@
+[
+    {
+        "Description": "Buffer overflow when using ngx_http_v3_module",
+        "Advisory": "https://my.f5.com/manage/s/article/K000162604",
+        "CVE-2026-90439": "https://www.cve.org/CVERecord?id=CVE-2026-90439"
+    },
+    {
+        "Description": "Buffer overflow when using map and regex",
+        "Advisory": "https://my.f5.com/manage/s/article/K000162097",
+        "CVE-2026-42533": "https://www.cve.org/CVERecord?id=CVE-2026-42533"
+    },
+    {
+        "Description": "Memory disclosure when using ngx_http_slice_module",
+        "Advisory": "https://my.f5.com/manage/s/article/K000162100",
+        "CVE-2026-60005": "https://www.cve.org/CVERecord?id=CVE-2026-60005"
+    },
+    {
+        "Description": "Use-after-free when using ngx_http_ssi_module",
+        "Advisory": "https://my.f5.com/manage/s/article/K000162098",
+        "CVE-2026-56434": "https://www.cve.org/CVERecord?id=CVE-2026-56434"
+    },
+    {
+        "Description": "Use-after-free in HTTP/3",
+        "Advisory": "https://my.f5.com/manage/s/article/K000161616",
+        "CVE-2026-42530": "https://www.cve.org/CVERecord?id=CVE-2026-42530"
+    },
+    {
+        "Description": "Buffer overflow in the ngx_http_proxy_v2_module and ngx_http_grpc_module",
+        "Advisory": "https://my.f5.com/manage/s/article/K000161584",
+        "CVE-2026-42055": "https://www.cve.org/CVERecord?id=CVE-2026-42055"
+    },
+    {
+        "Description": "Buffer overread in the ngx_http_charset_module",
+        "Advisory": "https://my.f5.com/manage/s/article/K000161585",
+        "CVE-2026-48142": "https://www.cve.org/CVERecord?id=CVE-2026-48142"
+    }
+]

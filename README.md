@@ -1,6 +1,6 @@
-# Multi-Domain Systems and Network Engineering Portfolio
+# Personal Portfolio
 
-This repository serves as a centralized technical portfolio demonstrating practical engineering experience across infrastructure deployment, automation, systems administration, and advanced network design. 
+This repository serves as a technical portfolio demonstrating practical engineering experience across infrastructure deployment, automation, systems administration, and network designs. 
 
 ---
 
