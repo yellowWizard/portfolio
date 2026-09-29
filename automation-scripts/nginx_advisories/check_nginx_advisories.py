@@ -44,7 +44,6 @@ def is_vulnerable(ranges, MAJOR, MINOR, PATCH):
             elif int(MAJOR) > int(min_range[0]):
                 in_range = True
             if in_range:
-                is_safe = True
                 if int(MAJOR) == int(max_range[0]):
                     if int(MINOR) == int(max_range[1]):
                         if int(PATCH) <= int(max_range[2]):
